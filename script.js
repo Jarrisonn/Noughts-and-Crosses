@@ -253,6 +253,35 @@ const displayController = (() => {
      
     };
 
+    
+
     container.appendChild(button);
   });
+
+  chooseName = () => {
+    container.classList.remove("container");
+    container.classList.add("hidden")
+    const form = document.createElement("form")
+    const playerOneNameEl = document.createElement("input")
+    const playerTwoNameEl = document.createElement("input")
+    const startGameBtn = document.createElement("button")
+    startGameBtn.textContent = "Start Game"
+    playerOneNameEl.placeholder = "Please Choose a name for player one"
+    playerTwoNameEl.placeholder = "Please Choose a name for player two"
+    startGameBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      playerOne.name = playerOneNameEl.value;
+      playerTwo.name = playerTwoNameEl.value;
+      console.log(playerOneNameEl.value)
+      form.classList.add("hidden");
+      container.classList.remove("hidden")
+      container.classList.add("container")
+    })
+
+    form.appendChild(playerOneNameEl);
+    form.appendChild(playerTwoNameEl);
+    form.appendChild(startGameBtn);
+    document.body.appendChild(form)
+  }
+  chooseName();
 })();
