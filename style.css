@@ -2,29 +2,47 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
     height: 100vh;
-    display:flex;
-    justify-content: center;
+    display: flex;
     align-items: center;
     flex-direction: column;
-
+    background-color: #ADE8F4;
+    color: black;
+    overflow-y: hidden;
+}
+.title{
+    font-size: 1.5rem;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    background-color: #CAF0F8;
+    caret-color: transparent;
+    cursor: default;   
 }
 .container{
-    height:750px;
-    width: 750px;
+    height:900px;
+    margin-top: 1rem;
+    width: 900px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: #ccc;
+    background-color: #48CAE4;
+    border: 1px solid black;
+    animation: fadeIn ease 2s;
+    
 }
 .btn{
+    height: 300px;
+    width: 300px;
     background-color: transparent;
-    font-size: 2rem;
-    
-    
-    
-    
+    font-size: 3rem;
+    font-family: inherit;
+    border: 1px solid black;
+    caret-color: transparent;
 }
 .btn:hover{
     cursor: pointer;
@@ -41,20 +59,104 @@ body{
     opacity: 0;
     height: 0;
     width: 0;
+    z-index: -10;
     
 }
 form{
     display: flex;
+    height: 500px;
     width: 600px;
     flex-direction: column;
     text-align: center;
     justify-content: space-between;
-
+    
+    margin-top: 2rem;
+    
 }
 form input{
     text-align: center;
+    font-family: inherit;
     padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    
 }
 form button{
     padding: 2rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: default;
+    caret-color: transparent;
+    animation: fadeIn ease 2s;
+
+}
+.result button{
+    font-size: 2rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+/* fade in animation */
+
+.fade-in {
+  animation: fadeIn ease 3s;
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
 }

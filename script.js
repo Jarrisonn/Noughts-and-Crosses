@@ -1,5 +1,6 @@
 const container = document.querySelector(".container");
 
+
 const board = (() => {
   let boardArray = ["", "", "", "", "", "", "", "", ""];
 
@@ -128,6 +129,9 @@ const displayController = (() => {
         displayWinner();
         console.log("player 1 wins");
       }
+      if(topLeft && topMid && topRight && midLeft && midMid && midRight && botLeft && botMid && botRight && playerOne.hasWon === false && playerTwo.hasWon ===false){
+        displayTie();
+      }
     };
 
     const playerTwoWinCheck = () => {
@@ -207,7 +211,30 @@ const displayController = (() => {
         displayWinner();
         console.log("player 2 wins");
       }
+      if(topLeft && topMid && topRight && midLeft && midMid && midRight && botLeft && botMid && botRight && playerOne.hasWon === false && playerTwo.hasWon ===false){
+        displayTie();
+      }
     };
+
+    displayTie = () => {
+      container.classList.add("hidden");
+      container.classList.remove("container");
+      let resultDiv = document.createElement("div");
+      let resultEl = document.createElement("h2");
+      let newGameBtn = document.createElement("button");
+      resultDiv.classList.add("result");
+      newGameBtn.classList.add("restartgame");
+      newGameBtn.innerText = "Restart Game";
+      resultEl.innerText = "Tie Game!"
+      resultDiv.appendChild(resultEl);
+      resultDiv.appendChild(newGameBtn);
+      document.body.appendChild(resultDiv);
+      newGameBtn.addEventListener("click", () => {
+        restartGame();
+        resultDiv.innerHTML = "";
+
+      });
+    }
 
     displayWinner = () => {
       container.classList.add("hidden");
@@ -215,6 +242,8 @@ const displayController = (() => {
       let resultDiv = document.createElement("div");
       let resultEl = document.createElement("h2");
       let newGameBtn = document.createElement("button");
+      resultDiv.classList.add("result");
+      newGameBtn.classList.add("restartgame");
       newGameBtn.innerText = "Restart Game";
       console.log(playerOne.hasWon);
       if(playerOne.hasWon === true){
@@ -270,8 +299,18 @@ const displayController = (() => {
     playerTwoNameEl.placeholder = "Please Choose a name for player two"
     startGameBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      playerOne.name = playerOneNameEl.value;
-      playerTwo.name = playerTwoNameEl.value;
+      if(playerOneNameEl.value){
+        playerOne.name = playerOneNameEl.value;
+      }else{
+        playerOne.name = "Player One"
+      }
+      if(playerTwoNameEl.value){
+        playerTwo.name = playerTwoNameEl.value;
+      }else{
+        playerTwo.name = "Player Two"
+      }
+      
+      
       console.log(playerOneNameEl.value)
       form.classList.add("hidden");
       container.classList.remove("hidden")
